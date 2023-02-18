@@ -62,6 +62,10 @@ Multi factor authentication is active on all user account on my AWS
 
 ![MFA](assets/week0/USer%20login.png)
 
+###
+Created an Aws organisation for the bootcamp. This will be used for all the bootcamp projects
+![AWS organisation](assets/week0/AWS%20organisation.jpg)
+
 ### Eventbridge Hookup
 ### Open Support Ticket on Service limits
 
