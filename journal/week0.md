@@ -13,7 +13,7 @@ Below is the image.
 ### Logical architectural diagram
 I was able to recreate the architectural diagram on lucid with no challenges.
 Image attached below
-![]()
+![Logic diagram](assets/week0/crudder%20architectural.jpg)
 
 ### Create an Admin User
 Using the AWS root account I was able to create a second user account that has admin right. This account will be used to administrate the AWS organisation.
