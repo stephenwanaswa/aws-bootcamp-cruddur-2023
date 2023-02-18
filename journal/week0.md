@@ -7,7 +7,7 @@ Started the week with watching the bootcamps live stream on youtube.
 I was able to do a pen sketch of the cruddur app based on the pitch that was given 
 Below is the image.
 
-![]()
+![sketch](assets/week0/sketch.jpg)
 
 
 ### Logical architectural diagram
