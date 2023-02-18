@@ -88,4 +88,3 @@ Identity & access Management review
 Check on the shared responsibility of threat detection
 
 
-### Scrub sensitive data
