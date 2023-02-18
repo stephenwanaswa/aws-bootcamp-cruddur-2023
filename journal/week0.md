@@ -18,7 +18,7 @@ Image attached below
 ### Create an Admin User
 Using the AWS root account I was able to create a second user account that has admin right. This account will be used to administrate the AWS organisation.
 
-![]()
+![Admin USer](assets/week0/User.jpg)
 ### Use CloudShell
 On AWS page I was able to find the cloud CLI link and clicked on it. Using the tip from Andrew Brown's video I was able to use the code below to active the auto prompts to help with auto completing the commands.
 
