@@ -74,6 +74,10 @@ Installed aws cli on the windows machine
 ### Eventbridge Hookup
 ### Open Support Ticket on Service limits
 
+### Cloudtrail
+Setup cloudtrail for resource change tracking and troubleshooting
+![Cloudtrail](assets/week0/Cloudtrail.jpg)
+
 ## HomeWork Other
 ### Update Access Permissions for AWS Billing, Cost Management, and Account consoles
 Got a notification on the billings page to update access permission for AWS Billing, Cost Management, and Account consoles. I read up on the update that Amazon is making to the Billings page and made the recommended changes.
