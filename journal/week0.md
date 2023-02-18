@@ -62,10 +62,15 @@ Multi factor authentication is active on all user account on my AWS
 
 ![MFA](assets/week0/USer%20login.png)
 
-###
+### AWS organisations
 Created an Aws organisation for the bootcamp. This will be used for all the bootcamp projects
 ![AWS organisation](assets/week0/AWS%20organisation.jpg)
 
+
+### AWS windows CLi
+Installed aws cli on the windows machine
+
+![Windows CLi](assets/week0/aws%20cli%20windows.jpg)
 ### Eventbridge Hookup
 ### Open Support Ticket on Service limits
 
