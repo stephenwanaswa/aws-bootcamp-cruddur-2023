@@ -26,6 +26,7 @@ On AWS page I was able to find the cloud CLI link and clicked on it. Using the t
 aws --cli-auto-prompt
 
 ```
+![Cloud Shell](assets/week0/aws%20cloud%20cli.jpg)
 
 Went through a couple of command and read about the on the AWS documentation
 
@@ -37,6 +38,8 @@ unzip awscliv2.zip
 sudo ./aws/install
 
 ```
+
+![Aws cli](assets/week0/aws%20cli.jpg)
 
 I the used the credtial generated on the section below and verified my user account logged in
 
