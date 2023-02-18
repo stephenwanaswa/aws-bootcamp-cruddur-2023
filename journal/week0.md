@@ -49,11 +49,11 @@ I needed a way to login to aws on Gitpod. I generated an api key to be used on g
 
 ### Create a Billing Alarm
 I used Chirag Nayyar Video [AWS Bootcamp Week 0](https://www.youtube.com/watch?v=OVw3RrlP-sI) to create the billing alarm
-![]()
+![Billing Alarm](assets/week0/billing%20alarm.jpg)
 
 ### Create a Budget
 I created a zero limit budget and was able to get an alert when my usage went above that.
-![]()
+![Budgets](assets/week0/Budgets.jpg)
 
 
 ## Home Work Challenges
