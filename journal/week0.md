@@ -46,8 +46,6 @@ I the used the credtial generated on the section below and verified my user acco
 ### Generate AWS Credentials
 I needed a way to login to aws on Gitpod. I generated an api key to be used on gitpod. I successfuly exported them as environmental variables on gitpod to ease future logins
 
-![]()
-
 
 ### Create a Billing Alarm
 I used Chirag Nayyar Video [AWS Bootcamp Week 0](https://www.youtube.com/watch?v=OVw3RrlP-sI) to create the billing alarm
@@ -61,6 +59,8 @@ I created a zero limit budget and was able to get an alert when my usage went ab
 ## Home Work Challenges
 ### Set MFA on both account
 Multi factor authentication is active on all user account on my AWS
+
+![MFA](assets/week0/USer%20login.png)
 
 ### Eventbridge Hookup
 ### Open Support Ticket on Service limits
