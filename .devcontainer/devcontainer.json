@@ -20,6 +20,7 @@
 				"42Crunch.vscode-openapi",
 				"cweijan.vscode-postgresql-client2",
 				"AmazonWebServices.aws-toolkit-vscode",
+				"WakaTime.vscode-wakatime"
 			]
 		}
 	}
