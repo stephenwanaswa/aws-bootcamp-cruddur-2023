@@ -7,6 +7,7 @@ opentelemetry-instrumentation-flask
 opentelemetry-instrumentation-requests
 
 watchtower
+aws-xray-sdk
 
 blinker
 rollbar
