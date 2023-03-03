@@ -52,6 +52,11 @@ provider.add_span_processor(simple_processor)
 trace.set_tracer_provider(provider)
 tracer = trace.get_tracer(__name__)
 
+# AWS Xray
+xray_url = os.getenv("AWS_XRAY_URL")
+xray_recorder.configure(service='backend-flask-cruddur', dynamic_naming=xray_url)
+
+
 app = Flask(__name__)
 
 # Honeycomb
@@ -68,8 +73,6 @@ RequestsInstrumentor().instrument()
 #LOGGER.info("some message")
 
 # AWS Xray
-xray_url = os.getenv("AWS_XRAY_URL")
-xray_recorder.configure(service='backend-flask-cruddur', dynamic_naming=xray_url)
 XRayMiddleware(app, xray_recorder)
 
 frontend = os.getenv('FRONTEND_URL')
@@ -106,11 +109,12 @@ def rollbar_test():
     rollbar.report_message('Hello World!', 'warning')
     return "Hello World!"
 
-@app.after_request
-def after_request(response):
-    timestamp = strftime('[%Y-%b-%d %H:%M]')
-    LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
-    return response
+#Cloud watch logs
+#@app.after_request
+#def after_request(response):
+#    timestamp = strftime('[%Y-%b-%d %H:%M]')
+ #   LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
+  #  return response
 
 @app.route("/api/message_groups", methods=['GET'])
 def data_message_groups():
@@ -148,8 +152,10 @@ def data_create_message():
   return
 
 @app.route("/api/activities/home", methods=['GET'])
+@xray_recorder.capture('activities_home')
 def data_home():
-  data = HomeActivities.run(logger = LOGGER)
+  data = HomeActivities.run()
+  #Add above when usin cloud watch logger = LOGGER
   return data, 200
 
 @app.route("/api/activities/notifications", methods=['GET'])
@@ -158,6 +164,7 @@ def data_notifications():
   return data, 200
 
 @app.route("/api/activities/@<string:handle>", methods=['GET'])
+@xray_recorder.capture('activities_users')
 def data_handle(handle):
   model = UserActivities.run(handle)
   if model['errors'] is not None:
@@ -189,6 +196,7 @@ def data_activities():
   return
 
 @app.route("/api/activities/<string:activity_uuid>", methods=['GET'])
+@xray_recorder.capture('activities_show')
 def data_show_activity(activity_uuid):
   data = ShowActivity.run(activity_uuid=activity_uuid)
   return data, 200
