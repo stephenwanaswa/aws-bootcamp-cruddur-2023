@@ -149,6 +149,45 @@ I was able to get the data on rollbar
 
 ### Cloud watch
 
+Added watchtower to the requirements.txt
+
+```
+watchtower
+```
+and installed it using ```pip install -r requirements.txt ```
+
+I Imported the necessary libraries in the app.py by adding this 
+```
+import watchtower
+import logging
+from time import strftime
+```
+
+Added the CloudWatch log handler to Python
+```
+LOGGER = logging.getLogger(__name__)
+LOGGER.setLevel(logging.DEBUG)
+console_handler = logging.StreamHandler()
+cw_handler = watchtower.CloudWatchLogHandler(log_group='cruddur')
+LOGGER.addHandler(console_handler)
+LOGGER.addHandler(cw_handler)
+LOGGER.info("some message")
+```
+
+I used the code below to capture errors
+```
+@app.after_request
+def after_request(response):
+    timestamp = strftime('[%Y-%b-%d %H:%M]')
+    LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
+    return response
+```
+
+
+On Docker compose I added the AWS Region, Access ID and Access key
+
+I ran docker Compose up to start up the app and accessed the frontend and backend to generate some activities. Cloudwatch was able to capture some data
+
 ![cloudwatch](/journal/assets/week2/cloudwatch.jpg)
 
 ## Homework Challenges Work in Progress
