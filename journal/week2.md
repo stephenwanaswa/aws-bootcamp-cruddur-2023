@@ -83,8 +83,91 @@ Honeycomb Query page
 ![honeyquery](/journal/assets/week2/honeycomb%20query.jpg)
 
 ### AWS X-Ray
+Started by setting up the required sdk on python using the requirement.txt and ins talled it
+```
+aws-xray-sdk
+```
+I imported the sdk on python
 
+```
+from aws_xray_sdk.core import xray_recorder
+from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
+
+xray_url = os.getenv("AWS_XRAY_URL")
+xray_recorder.configure(service='Cruddur', dynamic_naming=xray_url)
+XRayMiddleware(app, xray_recorder)
+```
+
+I initialized the sdk on the pythone code
+
+```
+XRayMiddleware(app, xray_recorder)
+```
+
+
+Added the daemon service to docker compose as below
+```
+xray-daemon:
+    image: "amazon/aws-xray-daemon"
+    environment:
+      AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
+      AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
+      AWS_REGION: "us-east-1"
+    command:
+      - "xray -o -b xray-daemon:2000"
+    ports:
+      - 2000:2000/udp
+```
+
+Add the environmental variable to docker compose
+
+```
+      AWS_XRAY_URL: "*4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}*"
+      AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
+```
+
+
+
+Added a xray.json file on thw aws folder. This will be use to setup sampling rules
+
+```
+{
+    "SamplingRule": {
+        "RuleName": "Cruddurx",
+        "ResourceARN": "*",
+        "Priority": 9000,
+        "FixedRate": 0.1,
+        "ReservoirSize": 5,
+        "ServiceName": "backend-flask-Cruddur",
+        "ServiceType": "*",
+        "Host": "*",
+        "HTTPMethod": "*",
+        "URLPath": "*",
+        "Version": 1
+    }
+  }
+```
+
+
+I used the code below to create the group name on AWS
+
+```
+FLASK_ADDRESS="https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
+aws xray create-group \
+   --group-name "Cruddurx" \
+   --filter-expression "service(\"backend-flask\")
+```
+
+
+I the ran the below code to create the sampling rule via cli on AWS
+
+```
+aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json
+
+```
+After running the docker container and accessing the front and back end to generate activity xray was able to get some data
 ![xray](/journal/assets/week2/xray%202.jpg)
+
 ![xraysegment](/journal/assets/week2/xray%20segments.jpg)
 
 ### Rollbar
@@ -190,7 +273,7 @@ I ran docker Compose up to start up the app and accessed the frontend and backen
 
 ![cloudwatch](/journal/assets/week2/cloudwatch.jpg)
 
-## Homework Challenges Work in Progress
+## Homework Challenges (Work in Progress)
 1. Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]
 2. Add custom instrumentation to Honeycomb to add more attributes eg. UserId, Add a custom span
 3. Run custom queries in Honeycomb and save them later eg. Latency by UserID, Recent Traces
