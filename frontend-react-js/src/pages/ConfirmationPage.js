@@ -40,12 +40,20 @@ export default function ConfirmationPage() {
     }
   }
 
+  // Get saved email from session storage
+  React.useEffect(() => {
+    const savedEmail = sessionStorage.getItem('email');
+    if (savedEmail) {
+      setEmail(savedEmail);
+    }
+  }, []);
+
   const onsubmit = async (event) => {
     event.preventDefault();
     setErrors('')
     try {
       await Auth.confirmSignUp(email, code);
-      window.location.href = "/"
+      window.location.href = "/signin"
     } catch (error) {
       setErrors(error.message)
     }

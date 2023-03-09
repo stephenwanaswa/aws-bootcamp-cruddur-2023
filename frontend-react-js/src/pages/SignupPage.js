@@ -8,7 +8,7 @@ import { Auth } from 'aws-amplify';
 
 export default function SignupPage() {
 
-  // Username is Eamil
+  // Username is Email
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [username, setUsername] = React.useState('');
@@ -34,6 +34,9 @@ export default function SignupPage() {
         }
       });
       console.log(user);
+      // Store email using Session storage to use it in confirmation & sign in page
+      sessionStorage.setItem('email', email);
+
       window.location.href = `/confirm?email=${email}`
     } catch (error) {
         console.log(error);

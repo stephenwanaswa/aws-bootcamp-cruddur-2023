@@ -13,6 +13,15 @@ export default function SigninPage() {
   const [password, setPassword] = React.useState('');
   const [errors, setErrors] = React.useState('');
 
+  // Get email save on the session storage on the signup page
+  React.useEffect(() => {
+    const savedEmail = sessionStorage.getItem('email');
+    if (savedEmail) {
+      setEmail(savedEmail);
+      
+    }
+  }, []);
+
   const onsubmit = async (event) => {
     setErrors('')
     event.preventDefault();
