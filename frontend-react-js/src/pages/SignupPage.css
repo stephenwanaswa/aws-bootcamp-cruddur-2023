@@ -64,7 +64,7 @@ article.signup-article input[type='password'] {
 
 article.signup-article input[type='text']:focus ,
 article.signup-article input[type='password']:focus {
-  border: solid 1px rgb(149,0,255,1);
+  border: solid 1px var(--field-border-focus);
 }
 
 article.signup-article .submit {
