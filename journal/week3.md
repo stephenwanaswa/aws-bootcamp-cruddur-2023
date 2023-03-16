@@ -7,12 +7,12 @@ Select create User pool. By default it select the cognit user pool which we are 
 
 #### Step 1 Configure Sign-in Experience
 Select the email option from the cognito user pool sign-in options. You can read more about the options by selecting the info options.
-![Step 1](assets/week3/step1.jpg)
+![Step 1](assets/week3/Step1.jpg)
 
 #### Step 2 Configure security requirements
 Password policy. We define the length and complexity of the users password.
 We leave the password option as the cognito defaults and for now select no MFA(This will be setup later). User account recovery we enable Self-service account recovery and email as the delivery option.
-![Step 2](assets/week3/step2.png)
+![Step 2](assets/week3/Step2.png)
 
 #### Step 3 Configure sign-up experience
 We leave all the default options. Then add the name preffered_username on the required attribute
