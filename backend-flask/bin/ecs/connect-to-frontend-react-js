@@ -1,0 +1,13 @@
+#! /usr/bin/bash
+
+if [ -z "$1" ]; then
+  echo "No TASK_ID argument supplied eg ./bin/ecs/connect-to-frontend-react-js 62b495988a6250f2293f949b1"
+  exit 1
+fi
+TASK_ID=$1
+
+CONTAINER-NAME=frontend-react-js
+echo "TASK ID : $TASK ID"
+echo "Container Name: $CONTAINER_NAME"
+
+aws ecs execute-command --region us-east-1 --cluster cruddur --task $TASK_ID --container $CONTAINER_NAME --command "/bin/sh" --interactive
