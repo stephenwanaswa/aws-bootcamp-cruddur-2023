@@ -19,9 +19,11 @@ export default function HomeFeedPage() {
   const loadData = async () => {
     try {
       const backend_url = `${process.env.REACT_APP_BACKEND_URL}/api/activities/home`
+      await getAccessToken()
+      const access_token = localStorage.getItem("access_token")
       const res = await fetch(backend_url, {
         headers: {
-          Authorization: `Bearer ${getAccessToken}`
+          Authorization: `Bearer ${access_token}`
         },
         method: "GET"
       });
@@ -36,14 +38,13 @@ export default function HomeFeedPage() {
     }
   };
 
-
-  
   React.useEffect(()=>{
     //prevents double call
     if (dataFetchedRef.current) return;
     dataFetchedRef.current = true;
 
     loadData();
+    checkAuth();
     checkAuth(setUser);
   }, [])
 
@@ -52,6 +53,7 @@ export default function HomeFeedPage() {
       <DesktopNavigation user={user} active={'home'} setPopped={setPopped} />
       <div className='content'>
         <ActivityForm  
+          user_handle={user}
           popped={popped}
           setPopped={setPopped} 
           setActivities={setActivities} 
