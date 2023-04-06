@@ -37,6 +37,7 @@ import logging
 
 # Rollbar ------
 from time import strftime
+import os
 import rollbar
 import rollbar.contrib.flask
 from flask import got_request_exception
@@ -121,7 +122,6 @@ def init_rollbar():
     # send exceptions from `app` to rollbar, using flask's signal system.
     got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
 
-
 @app.route('/api/health-check')
 def health_check():
   return {'success': True}, 200
@@ -157,7 +157,7 @@ def data_messages(message_group_uuid):
   try:
     claims = cognito_jwt_token.verify(access_token)
     # authenicatied request
-    app.logger.debug("authenticated")
+    app.logger.debug("authenicated")
     app.logger.debug(claims)
     cognito_user_id = claims['sub']
     model = Messages.run(
@@ -183,7 +183,7 @@ def data_create_message():
   try:
     claims = cognito_jwt_token.verify(access_token)
     # authenicatied request
-    app.logger.debug("authenticated")
+    app.logger.debug("authenicated")
     app.logger.debug(claims)
     cognito_user_id = claims['sub']
     if message_group_uuid == None:
@@ -219,14 +219,14 @@ def data_home():
   try:
     claims = cognito_jwt_token.verify(access_token)
     # authenicatied request
-    app.logger.debug("authenticated")
+    app.logger.debug("authenicated")
     app.logger.debug(claims)
     app.logger.debug(claims['username'])
     data = HomeActivities.run(cognito_user_id=claims['username'])
   except TokenVerifyError as e:
     # unauthenicatied request
     app.logger.debug(e)
-    app.logger.debug("unauthenticated")
+    app.logger.debug("unauthenicated")
     data = HomeActivities.run()
   return data, 200
 
