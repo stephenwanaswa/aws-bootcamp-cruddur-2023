@@ -15,7 +15,7 @@ RUN pip3 install -r requirements.txt
 
 #Outisde Container -> inside Container
 # .MEans everything in the current directory
-#first . /Vanckend-flask (Outside conatiner)
+#first . /backend-flask (Outside conatiner)
 #Second . /backend-flask(inside container)
 COPY . .
 
