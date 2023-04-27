@@ -1,4 +1,5 @@
 import './App.css';
+import './components/Popup.css';
 
 import HomeFeedPage from './pages/HomeFeedPage';
 import NotificationsFeedPage from './pages/NotificationsFeedPage';
@@ -10,6 +11,7 @@ import MessageGroupsPage from './pages/MessageGroupsPage';
 import MessageGroupPage from './pages/MessageGroupPage';
 import MessageGroupNewPage from './pages/MessageGroupNewPage';
 import ConfirmationPage from './pages/ConfirmationPage';
+
 import React from 'react';
 import {
   createBrowserRouter,
