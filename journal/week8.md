@@ -66,7 +66,7 @@ Add the lambda folder /process-image to our aws/lambda
 We add a lambda code using Javascript and the [sharpjs](https://sharp.pixelplumbing.com/install) image processing library
 First install sharp using the code ``` npm i sharp ``` and the AWS SDK for JavaScript using ```npm i @aws-sdk/client-s3 ```
 
-This is [Code](aws/lambdas/process-images/index.js) to the lambda
+This is [Code](../aws/lambdas/process-images/index.js) to the lambda
 
 ## Implement lambda layers
 ## Use s3 event notifications to trigger processing images
