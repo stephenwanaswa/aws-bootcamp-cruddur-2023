@@ -1,0 +1,9 @@
+[deploy]
+bucket = 'cfn-artifacts-2000'
+region = 'us-east-1'
+stack_name = 'CrdFrontend'
+
+[parameters]
+CertificateArn = 'arn:aws:acm:us-east-1:392067173187:certificate/a8613b40-6079-4c09-b377-a1198548429b'
+WwwBucketName = 'www.bytetech.digital'
+RootBucketName = 'bytetech.digital'
