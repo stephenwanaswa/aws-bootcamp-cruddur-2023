@@ -30,6 +30,7 @@ export default function DesktopNavigationLink(props) {
         break;
       case 'messages':
         return <MessagesIcon className='icon' />
+        default:
         break;
     }
   }
