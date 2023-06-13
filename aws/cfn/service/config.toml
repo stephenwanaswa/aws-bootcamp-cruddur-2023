@@ -2,3 +2,7 @@
 bucket = 'cfn-artifacts-2000'
 region = 'us-east-1'
 stack_name = 'CrdSrvBackendFlask'
+
+[parameters]
+EnvFrontendUrl = 'bytetech.digital'
+EnvBackendUrl = 'api.bytetech.digital'
