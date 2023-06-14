@@ -118,7 +118,7 @@ export default function ProfileForm(props) {
     if (event.target.classList.contains("profile_popup")) {
       props.setPopped(false);
     }
-  };
+  }
 
   if (props.popped === true) {
     return (
