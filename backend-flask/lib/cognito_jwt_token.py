@@ -9,14 +9,14 @@ import os
 from flask import current_app as app
 
 class FlaskAWSCognitoError(Exception):
-    pass
+  pass
 
 class TokenVerifyError(Exception):
-    pass
-    
+  pass
+
 def extract_access_token(request_headers):
     access_token = None
-    auth_header = request_headers.get('Authorization')
+    auth_header = request_headers.get("Authorization")
     if auth_header and " " in auth_header:
         _, access_token = auth_header.split()
     return access_token
@@ -34,6 +34,7 @@ class CognitoJwtToken:
         else:
             self.request_client = request_client
         self._load_jwk_keys()
+
 
     def _load_jwk_keys(self):
         keys_url = f"https://cognito-idp.{self.region}.amazonaws.com/{self.user_pool_id}/.well-known/jwks.json"
@@ -113,10 +114,10 @@ class CognitoJwtToken:
         self._check_expiration(claims, current_time)
         self._check_audience(claims)
 
-        self.claims = claims
+        self.claims = claims 
         return claims
 
-        from functools import wraps, partial
+from functools import wraps, partial
 
 def jwt_required(f=None, on_error=None):
     if f is None:
