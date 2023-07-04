@@ -6,3 +6,4 @@ stack_name = 'CrdSrvBackendFlask'
 [parameters]
 EnvFrontendUrl = 'https://bytetech.digital'
 EnvBackendUrl = 'https://api.bytetech.digital'
+DDBMessageTable = 'CrdDdb-DynamoDBTable-MX5U16E0P492'
