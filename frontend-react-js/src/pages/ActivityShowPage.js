@@ -7,7 +7,7 @@ import DesktopSidebar     from 'components/DesktopSidebar';
 import ActivityForm from 'components/ActivityForm';
 import ReplyForm from 'components/ReplyForm';
 import Replies from 'components/Replies';
-import ActivityItem from 'components/ActivityItem'
+import ActivityShowItem from 'components/ActivityShowItem'
 
 import {get} from 'lib/Requests';
 import {checkAuth} from 'lib/CheckAuth';
@@ -50,7 +50,7 @@ export default function ActivityShowPage() {
   let el_activity
   if (activity !== null){
     el_activity = (
-      <ActivityItem 
+      <ActivityShowItem 
         expanded={true}
         setReplyActivity={setReplyActivity}
         setPopped={setPoppedReply}

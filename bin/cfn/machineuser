@@ -12,10 +12,10 @@ REGION=$(cfn-toml key deploy.region -t $CONFIG_PATH)
 STACK_NAME=$(cfn-toml key deploy.stack_name -t $CONFIG_PATH)
 
 aws cloudformation deploy \
-  --stack-name CrdMachinueUser \
-  --s3-bucket cfn-artifacts-2000 \
+  --stack-name $STACK_NAME \
+  --s3-bucket $BUCKET \
   --s3-prefix db \
-  --region us-east-1 \
+  --region $REGION \
   --template-file "$CFN_PATH" \
   --no-execute-changeset \
   --tags group=cruddur-machine-user \
