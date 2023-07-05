@@ -12,6 +12,8 @@ tasks:
       pip install cfn-lint
       cargo install cfn-guard
       gem install cfn-toml
+  - name: s3_website_sync
+    before: |
       gem install aws_s3_website_sync
       gem install dotenv
   - name: aws-cli
