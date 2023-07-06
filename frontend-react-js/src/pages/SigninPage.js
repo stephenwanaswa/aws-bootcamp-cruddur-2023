@@ -23,7 +23,7 @@ export default function SigninPage() {
 
   const onsubmit = async (event) => {
     event.preventDefault();
-    setErrors('')
+    setErrors([])
     Auth.signIn(email, password)
     .then(user => {
       console.log('user',user)
@@ -34,7 +34,7 @@ export default function SigninPage() {
       if (error.code === 'UserNotConfirmedException') {
         window.location.href = "/confirm"
       }
-      setErrors(error.message)
+      setErrors([error.message])
     });
     return false
   }
